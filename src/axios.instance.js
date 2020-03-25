@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_URL } from 'config';
 import localStorage from 'helper/localStorage';
 
-export const tokenizedUrl = url => `${API_URL}/api/portal${url}?jwt=${localStorage.getToken()}`;
+export const tokenizedUrl = url => `${API_URL}/api/portal${url}?jwt=${localStorage.token}`;
 
 const instances = axios.create({
   baseURL: API_URL,
@@ -14,7 +14,7 @@ const instances = axios.create({
 });
 
 const onFulFilledRequest = conf => {
-  const authToken = localStorage.getToken();
+  const authToken = localStorage.token;
   if (authToken) {
     conf.headers.Authorization = `Bearer ${authToken}`;
   }
