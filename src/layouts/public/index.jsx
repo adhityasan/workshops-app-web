@@ -15,7 +15,7 @@ const PublicLayout = ({ children }) => (
 );
 
 const ContentWrapper = styled.div`
-  padding: 3rem 1rem 2rem 1rem;
+  padding: 5rem 1rem 2rem 1rem;
   min-height: calc(100vh - 7rem);
   max-width: 100vw;
   box-sizing: border-box;
