@@ -12,7 +12,6 @@ const FooterWrapper = styled.div`
   position: relative;
   width: 100vw;
   height: 7rem;
-  background-color: #eee;
   box-sizing: border-box;
 `;
 
