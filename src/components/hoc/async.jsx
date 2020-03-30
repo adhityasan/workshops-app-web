@@ -1,13 +1,25 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 
 const asyncComponent = importComponent => class AsyncComponentClass extends React.Component {
-  constructor() {
-    super();
+  _isMounted = false;
+
+  constructor(props) {
+    super(props);
     this.state = { component: null };
   }
 
   componentDidMount() {
-    importComponent().then(cmp => this.setState({ component: cmp.default }));
+    this._isMounted = true;
+    importComponent().then(cmp => {
+      if (this._isMounted) {
+        this.setState({ component: cmp.default });
+      }
+    });
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {

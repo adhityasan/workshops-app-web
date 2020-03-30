@@ -9,14 +9,14 @@ const PublicLayout = ({ children }) => (
     <TopNavigation />
     <ContentWrapper>
       {children}
+      <PublicFooter />
     </ContentWrapper>
-    <PublicFooter />
   </LayoutWrapper>
 );
 
 const ContentWrapper = styled.div`
   padding: 5rem 1rem 2rem 1rem;
-  min-height: calc(100vh - 7rem);
+  height: calc(100vh - 7rem);
   max-width: 100vw;
   box-sizing: border-box;
 `;

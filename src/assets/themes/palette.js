@@ -7,7 +7,7 @@ export default {
     black: '#000000',
   },
   primary: {
-    main: '#757575',
+    main: '#4f4f4f',
     contrastText: '#dadada',
   },
   secondary: {

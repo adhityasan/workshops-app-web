@@ -1,5 +1,6 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 
 import {
   InputAdornment,
@@ -35,11 +36,12 @@ const SearchEvents = memo(() => (
 ));
 
 const StyledSearchEvents = styled(TextField)`
-  && {
-    margin: 0 1rem;
-    min-width: 300px;
-    background-color: #f0f0f0;
-    border: none;
+  margin: 0 1rem;
+  background-color: #f0f0f0;
+  border: none;
+  width: 210px;
+  ${up('lg')} {
+    width: 300px;
   }
 `;
 

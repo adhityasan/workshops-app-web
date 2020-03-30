@@ -1,10 +1,10 @@
 import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
-const DoubleBounce = ({ height, width }) => (
+const DoubleBounce = ({ color = 'grey', height, width }) => (
   <LiWrap height={height} width={width}>
-    <BoundOne />
-    <BounceTwo />
+    <BoundOne color={color} />
+    <BounceTwo color={color} />
   </LiWrap>
 );
 
@@ -32,7 +32,7 @@ const BoundOne = styled.div`
    width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: ${props => props.color};
   opacity: 0.6;
   position: absolute;
   top: 0;
@@ -46,7 +46,7 @@ const BounceTwo = styled.div`
    width: 100%;
   height: 100%;
   border-radius: 50%;
-  background-color: #fff;
+  background-color: ${props => props.color};
   opacity: 0.6;
   position: absolute;
   top: 0;

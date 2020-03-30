@@ -1,7 +1,7 @@
 export const PUBLIC_NAVIGATIONS = [
   {
     name: 'organizers',
-    label: 'Organizer ?',
+    label: 'Event Organizer ?',
     path: '/isorganizer',
   },
   {

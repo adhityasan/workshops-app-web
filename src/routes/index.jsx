@@ -11,8 +11,9 @@ import { get as _get } from 'lodash/object';
 import LayoutProvider from 'layouts';
 import * as LayoutType from 'constant/layout';
 import { BROWSER_HISTORY_CREATED_ACTION_NAME } from 'constant';
+import { isUndefinedNull } from 'helpers/variable';
+import localStorage from 'helpers/localStorage';
 import { authenticate } from 'stores/modules/auth/action';
-import { isUndefinedNull } from 'helper/variable';
 
 import publicRoutes from './public';
 import PublicProvider from './public/provider';
@@ -37,9 +38,14 @@ const Routes = () => {
   const [layout, setLayout] = useState(LayoutType.DEFAULT);
 
   useEffect(() => {
-    const applyAuthenticate = () => dispatch(authenticate());
-    applyAuthenticate();
-  }, [dispatch]);
+    if (location.pathname === '/oauth/callback' && location.hash) {
+      const accessToken = location.hash.replace('#access_token=', '');
+      if (accessToken) {
+        localStorage.token = accessToken;
+        dispatch(authenticate({ strategy: 'jwt', accessToken }));
+      }
+    }
+  }, [dispatch, location]);
 
   useEffect(() => {
     /**

@@ -15,7 +15,8 @@
       "fetch": "readonly",
       "localStorage": "readonly",
       "navigator": "readonly",
-      "window": "readonly"
+      "window": "readonly",
+      "app": "readonly"
   },
   "parser": "babel-eslint",
   "parserOptions": {
@@ -51,6 +52,7 @@
           "error",
           "as-needed"
       ],
+      "no-underscore-dangle": ["warn", { "allow": ["_api"] }],
       "valid-typeof": "off",
       "react/jsx-props-no-spreading": [ "warn", {
         "exceptions": [ "Route", "Component", "PublicProvider", "PrivateProvider", "C" ]

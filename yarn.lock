@@ -955,6 +955,11 @@
   resolved "https://registry.yarnpkg.com/@emotion/unitless/-/unitless-0.7.5.tgz#77211291c1900a700b8a78cfafda3160d76949ed"
   integrity sha512-OWORNpfjMsSSUBVrRBVGECkhWcULOAJz9ZW8uK9qgxD+87M7jHRcvh/A96XXNhXTLmKcoYSQtBEX7lHMO7YRwg==
 
+"@feathersjs/client@^4.5.2":
+  version "4.5.2"
+  resolved "https://registry.yarnpkg.com/@feathersjs/client/-/client-4.5.2.tgz#8d150bae4730801fb58b104de6a833472a586348"
+  integrity sha512-SZFEbUKD7RciJSIrDGfYkyYg7OMt8U+i2tqc0HQPLdZQd+d3Tk/BhbxirZSdct0FyNpYURQp1AmCk1fJeqwK1g==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -4389,6 +4394,13 @@ fill-range@^4.0.0:
     is-number "^3.0.0"
     repeat-string "^1.6.1"
     to-regex-range "^2.1.0"
+
+final-form@^4.18.7:
+  version "4.18.7"
+  resolved "https://registry.yarnpkg.com/final-form/-/final-form-4.18.7.tgz#c30239ac9154cbfbf4f6d19e831f5fc9cbc1ba78"
+  integrity sha512-XdlYYGDcoUcKKVzRJxLg8N/ZG3wVLZvhO7K7PKQWVMjCiIUWdmtBwApw2NFS4P7RJvg8OdF73qGXhhE3K5PuDQ==
+  dependencies:
+    "@babel/runtime" "^7.8.3"
 
 finalhandler@~1.1.2:
   version "1.1.2"
@@ -8557,6 +8569,14 @@ react-final-form@^6.3.5:
   dependencies:
     "@babel/runtime" "^7.8.3"
     ts-essentials "^5.0.0"
+
+react-google-login@^5.1.2:
+  version "5.1.2"
+  resolved "https://registry.yarnpkg.com/react-google-login/-/react-google-login-5.1.2.tgz#217a3337438b20ea45b72722aacdf919dd6ec428"
+  integrity sha512-kxqMiQ2+8kV9W0PDiJYHtedddTZmMtVLrDo1BWpFq7c4ZEm938JhrwONeWsEjRhO1cVtCis6HEF9J7e9vxhVYQ==
+  dependencies:
+    "@types/react" "*"
+    prop-types "^15.6.0"
 
 react-i18next@^10.13.1:
   version "10.13.2"
