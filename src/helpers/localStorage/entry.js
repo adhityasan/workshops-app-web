@@ -1,4 +1,4 @@
-import { cError } from 'helper/console';
+import { cError } from 'helpers/console';
 
 import * as vtype from 'constant/type';
 
