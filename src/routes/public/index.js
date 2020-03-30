@@ -49,6 +49,17 @@ const publicRoutes = [
     component: ServerError,
   },
   {
+    exact: true,
+    path: '/oauth/callback',
+    key: '/public/oauth/callback',
+    location: {
+      state: {
+        layout: layoutType.DEFAULT,
+      },
+    },
+    component: null,
+  },
+  {
     path: '*',
     location: {
       state: {

@@ -2,7 +2,7 @@ import { createActions } from 'redux-actions';
 
 import config from 'config';
 import axiosins from 'axios.instance';
-import { cLog, cError } from 'helper/console';
+import { cLog, cError } from 'helpers/console';
 import * as acttype from 'constant/action';
 
 const actions = createActions(

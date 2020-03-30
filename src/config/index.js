@@ -4,11 +4,8 @@ export const APP_NAME = 'workshapp';
 
 export default {
   API: {
-    SIGNIN: '/signin',
+    SIGNIN: '/authentication',
     SIGNUP: '/signup',
-    GOOGLE_SIGNIN: {
-      TOKEN: `/auth/google/token?redirect_uri=${FULL_URL}`,
-      URL: `/auth/google/url?redirect_uri=${FULL_URL}`,
-    },
+    GOOGLE_SIGNIN: '/oauth/google',
   },
 };

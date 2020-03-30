@@ -1,4 +1,4 @@
-import { cLog } from 'helper/console';
+import { cLog } from 'helpers/console';
 // This optional code is used to register a service worker.
 // register() is not called by default.
 
