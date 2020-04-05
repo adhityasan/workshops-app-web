@@ -1,73 +1,57 @@
-import asyncComponent from 'components/hoc/async';
 import * as layoutType from 'constant/layout';
+import asyncComponent from 'components/hoc/async';
 import Homepage from 'pages/home';
 import Notfound from 'pages/404';
 import ServerError from 'pages/500';
+import Loader from 'layouts/loader';
 
 const Signin = asyncComponent(() => import('pages/signin'));
 const Signup = asyncComponent(() => import('pages/signup'));
-
-const location = {
-  state: {
-    layout: layoutType.PUBLIC,
-  },
-};
 
 const publicRoutes = [
   {
     exact: true,
     path: '/',
-    key: 'public/homepage',
+    key: 'public-homepage',
     component: Homepage,
-    location,
+    layout: layoutType.PUBLIC,
   },
   {
     exact: true,
     restricted: true,
     path: '/signin',
-    key: 'public/signin',
+    key: 'public-signin',
     component: Signin,
-    location,
+    layout: layoutType.PUBLIC,
   },
   {
     exact: true,
     restricted: true,
     path: '/signup',
-    key: 'public/signup',
+    key: 'public-signup',
     component: Signup,
-    location,
+    layout: layoutType.PUBLIC,
+  },
+  {
+    exact: true,
+    restricted: true,
+    path: '/oauth/callback',
+    key: '/public-oauth-callback',
+    component: Loader,
+    layout: layoutType.BLANK,
   },
   {
     exact: true,
     path: '/500',
-    key: '/public/500',
-    location: {
-      state: {
-        layout: layoutType.BLANK,
-      },
-    },
+    key: 'public-500',
     component: ServerError,
-  },
-  {
-    exact: true,
-    path: '/oauth/callback',
-    key: '/public/oauth/callback',
-    location: {
-      state: {
-        layout: layoutType.DEFAULT,
-      },
-    },
-    component: null,
+    layout: layoutType.PUBLIC,
   },
   {
     path: '*',
-    location: {
-      state: {
-        layout: layoutType.BLANK,
-      },
-    },
-    key: '/public/404',
+    key: 'public-404',
     component: Notfound,
+    layout: layoutType.PUBLIC,
   },
 ];
 

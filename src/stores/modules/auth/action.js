@@ -2,10 +2,9 @@ import { createActions } from 'redux-actions';
 
 import config from 'config';
 import axiosins from 'axios.instance';
-import { cLog, cError } from 'helpers/console';
 import * as acttype from 'constant/action';
 
-const actions = createActions(
+export const actions = createActions(
   acttype.REQUEST,
   acttype.SUCCESS,
   acttype.FAILURE,
@@ -19,15 +18,13 @@ export const authenticate = data => dispatch => {
   dispatch(actions.request());
   axiosins.post(config.API.SIGNIN, data)
     .then(res => {
-      cLog(res);
-      dispatch(actions.success());
+      dispatch(actions.success(res.data));
     })
     .catch(err => {
-      cError(err);
-      dispatch(actions.failure());
+      dispatch(actions.failure(err));
     });
 };
 
 export const signout = () => dispatch => {
-  dispatch(actions.authSignout());
+  dispatch(actions.signout());
 };

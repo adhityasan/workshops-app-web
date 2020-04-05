@@ -15,8 +15,10 @@ const LayoutProvider = ({ layout, children }) => {
       return (<PublicLayout>{children}</PublicLayout>);
     case Type.BLANK:
       return (<Blank>{children}</Blank>);
+    case Type.LOADER:
+      return <Loader />;
     default:
-      return (<Loader />);
+      return (<>{children}</>);
   }
 };
 

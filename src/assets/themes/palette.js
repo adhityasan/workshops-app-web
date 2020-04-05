@@ -46,13 +46,13 @@ export default {
     A400: '#303030',
     A700: '#616161',
   },
-  // text: {
-  //   primary: '#dadada',
-  //   secondary: 'rgba(255, 255, 255, 0.7)',
-  //   disabled: 'rgba(255, 255, 255, 0.5)',
-  //   hint: 'rgba(255, 255, 255, 0.5)',
-  //   icon: 'rgba(255, 255, 255, 0.5)',
-  // },
+  text: {
+    primary: 'rgba(0, 0, 0, 0.87)',
+    secondary: 'rgba(0, 0, 0, 0.54)',
+    disabled: 'rgbargba(0, 0, 0, 0.38)',
+    hint: 'rgba(0, 0, 0, 0.38)',
+    icon: 'rgba(0, 0, 0, 0.38)',
+  },
   // background: {
   //   paper: '#424242',
   //   default: '#303030',
@@ -66,7 +66,8 @@ export default {
   //   disabled: 'rgba(255, 255, 255, 0.3)',
   //   disabledBackground: 'rgba(255, 255, 255, 0.12)',
   // },
-  // divider: 'rgba(255, 255, 255, 0.12)',
+  divider: 'rgba(255, 255, 255, 0.12)',
+  separator: '#c0c0c0c0',
   contrastThreshold: 3,
   tonalOffset: 0.2,
 };

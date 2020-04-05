@@ -4,8 +4,8 @@ export const APP_NAME = 'workshapp';
 
 export default {
   API: {
-    SIGNIN: '/authentication',
-    SIGNUP: '/signup',
-    GOOGLE_SIGNIN: '/oauth/google',
+    SIGNIN: `${API_URL}/authentication`,
+    SIGNUP: `${API_URL}/signup`,
+    GOOGLE_SIGNIN: `${API_URL}/oauth/google`,
   },
 };

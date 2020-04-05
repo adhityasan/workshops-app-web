@@ -8,6 +8,8 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import Separator from 'components/separator';
+
 import config from 'config';
 import GoogleIcon from 'assets/images/google.svg';
 import WorkshopLogo from 'assets/images/workshop.png';
@@ -89,25 +91,30 @@ const Signin = memo(() => {
                   </Grid>
                 </Grid>
                 <Grid container item direction="row" justify="flex-end" spacing={3}>
-                  <Grid item>
+                  <Grid item xs={12}>
                     <Button
-                      size="large"
-                      color="primary"
-                      variant="contained"
-                      href={config.API.GOOGLE_SIGNIN}
-                      startIcon={<img src={GoogleIcon} />}
-                    >
-                      SIGN UP WITH GOOGLE
-                    </Button>
-                  </Grid>
-                  <Grid item>
-                    <Button
+                      fullWidth
                       type="submit"
                       size="large"
                       color="primary"
                       variant="contained"
                     >
                       SIGN IN
+                    </Button>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Separator text="or" />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      fullWidth
+                      size="large"
+                      color="primary"
+                      variant="contained"
+                      href={config.API.GOOGLE_SIGNIN}
+                      startIcon={<img alt="google icon" src={GoogleIcon} />}
+                    >
+                      SIGN IN WITH GOOGLE
                     </Button>
                   </Grid>
                 </Grid>

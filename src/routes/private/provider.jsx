@@ -11,13 +11,13 @@ const Provider = ({
   <Route
     {...rest}
     render={props => (
-      auth.authenticated && rest.restricted
-        ? <Redirect to="/" />
-        : (
+      auth.authenticated
+        ? (
           <LayoutProvider layout={layout}>
             <Component auth={auth} {...props} />
           </LayoutProvider>
         )
+        : <Redirect to="/signin" />
     )}
   />
 );

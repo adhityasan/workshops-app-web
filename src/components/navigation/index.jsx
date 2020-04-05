@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
   List,
@@ -8,12 +9,11 @@ import {
   Drawer,
 } from '@material-ui/core';
 import { Menu as MenuIcon } from '@material-ui/icons';
-// import { Trans } from 'react-i18next';
 
-
+import navCondition from 'helpers/validator/navCondition';
 import WorkshopLogo from 'assets/images/workshop.png';
-import SearchEvents from 'components/public/fields/SearchEvents';
-import { PUBLIC_NAVIGATIONS } from 'constant/navigations';
+import SearchEvents from 'components/fields/SearchEvents';
+import ALL_NAVIGATIONS from 'constant/navigations';
 
 import {
   Logo,
@@ -27,8 +27,9 @@ import {
   PublicNavList,
 } from './styled';
 
-const NavigationTop = () => {
+const Navigation = () => {
   const [drawerToggled, setDrawerToggled] = useState(false);
+  const states = useSelector(state => state);
 
   const toggleDrawer = open => event => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) return;
@@ -55,7 +56,7 @@ const NavigationTop = () => {
           </SearchEventsWrapper>
         </Grid>
         <Grid container item xs={6} direction="row" justify="flex-end">
-          {PUBLIC_NAVIGATIONS.map(nav => (
+          {ALL_NAVIGATIONS.map(nav => (
             <PublicNav key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
               <Typography>{nav.label}</Typography>
             </PublicNav>
@@ -67,13 +68,14 @@ const NavigationTop = () => {
               onKeyDown={toggleDrawer(false)}
             >
               <List>
-                {PUBLIC_NAVIGATIONS.map(nav => (
-                  <ListItem key={nav.name}>
-                    <PublicNavList activeStyle={activePublicNavStyle} to={nav.path}>
-                      <Typography>{nav.label}</Typography>
+                {ALL_NAVIGATIONS.map(nav => (navCondition(states, nav.strict)
+                  ? (
+                    <PublicNavList key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
+                      <ListItem>
+                        <Typography>{nav.label}</Typography>
+                      </ListItem>
                     </PublicNavList>
-                  </ListItem>
-                ))}
+                  ) : null))}
               </List>
             </PublicNavListWrapper>
           </Drawer>
@@ -86,4 +88,4 @@ const NavigationTop = () => {
   );
 };
 
-export default NavigationTop;
+export default Navigation;

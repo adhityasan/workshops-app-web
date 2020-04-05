@@ -1,27 +1,21 @@
-import React, { useState, useEffect, memo } from 'react';
+import React, { useEffect, memo } from 'react';
 import {
   Switch,
   useLocation,
-  useHistory,
   matchPath,
 } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { get as _get } from 'lodash/object';
 
-import LayoutProvider from 'layouts';
-import * as LayoutType from 'constant/layout';
-import { BROWSER_HISTORY_CREATED_ACTION_NAME } from 'constant';
-import { isUndefinedNull } from 'helpers/variable';
-import localStorage from 'helpers/localStorage';
 import { authenticate } from 'stores/modules/auth/action';
+import localStorage from 'helpers/localStorage';
 
-import publicRoutes from './public';
+import publicRoutes from './public/routes';
 import PublicProvider from './public/provider';
-import appRoutes from './app';
-import PrivateProvider from './app/provider';
+import privateRoutes from './private/routes';
+import PrivateProvider from './private/provider';
 
 export const getRouteObject = val => {
-  const routeObj = [...publicRoutes, ...appRoutes].find(route => {
+  const routeObj = [...publicRoutes, ...privateRoutes].find(route => {
     const match = matchPath(val, route);
     if (match) return route;
     return null;
@@ -33,53 +27,29 @@ const Routes = () => {
   const dispatch = useDispatch();
   const auth = useSelector(state => state.auth);
   const location = useLocation();
-  const history = useHistory();
-
-  const [layout, setLayout] = useState(LayoutType.DEFAULT);
 
   useEffect(() => {
+    // Handle oauth callbcak redirect url
     if (location.pathname === '/oauth/callback' && location.hash) {
       const accessToken = location.hash.replace('#access_token=', '');
       if (accessToken) {
-        localStorage.token = accessToken;
         dispatch(authenticate({ strategy: 'jwt', accessToken }));
       }
     }
   }, [dispatch, location]);
 
   useEffect(() => {
-    /**
-     * Handling when browesrHistory just created and no layout.key in the location object
-     * the condition is fulfilled when user first time visit or enter the the app url
-     * for example: user enter '/app/map' in the address bar and the map page uses a different layout
-     * Switch will reset every children Route location property at the very beginning
-     */
-    if (history.action === BROWSER_HISTORY_CREATED_ACTION_NAME && isUndefinedNull(location.key)) {
-      const routeObj = getRouteObject(location.pathname);
-      const routeObjLayout = _get(routeObj, 'location.state.layout');
-      if (routeObjLayout) {
-        setLayout(routeObjLayout);
-      }
-    } else if (_get(location, 'state.layout')) {
-      setLayout(location.state.layout); // USE CUSTOM LAYOUT IN APP LAYOUT WHEN LOCATION.STATE.LAYOUT IS SET
-    } else if (auth.authenticated) {
-      setLayout(LayoutType.APP); // DEFAULT LAYOUT WHEN USER IS AUTHENTICATED
-    } else {
-      setLayout(LayoutType.PUBLIC); // USE PUBLIC LAYOUT WHEN USER IS NOT AUTHENTICATED
-    }
-  }, [location, history.action, auth.authenticated]);
-
-  const publicRoutesProvider = publicRoutes.map(conf => (<PublicProvider {...conf} auth={auth} />));
-
-  const appRoutesProvider = appRoutes.map(conf => (<PrivateProvider {...conf} auth={auth} />));
+    // Handle authentication at first time application loaded
+    // by re-authenticate exist token from localStorage
+    const existToken = localStorage.token.getItem();
+    if (existToken) dispatch(authenticate({ strategy: 'jwt', accessToken: existToken }));
+  }, [dispatch]);
 
   return (
-    <LayoutProvider layout={layout}>
-      <Switch>
-        {appRoutesProvider}
-        {publicRoutesProvider}
-      </Switch>
-    </LayoutProvider>
+    <Switch>
+      {privateRoutes.map(conf => (<PrivateProvider {...conf} auth={auth} />))}
+      {publicRoutes.map(conf => (<PublicProvider {...conf} auth={auth} />))}
+    </Switch>
   );
 };
 

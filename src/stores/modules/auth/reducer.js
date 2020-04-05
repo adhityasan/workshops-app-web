@@ -1,5 +1,6 @@
 import { handleActions } from 'redux-actions';
 
+import localStorage from 'helpers/localStorage';
 import * as acttype from 'constant/action';
 
 const defaultState = {
@@ -20,12 +21,15 @@ const auth = handleActions({
     loading: true,
     authenticated: false,
   }),
-  [acttype.SUCCESS]: (state, { payload }) => ({
-    ...state,
-    loading: false,
-    authenticated: true,
-    payload,
-  }),
+  [acttype.SUCCESS]: (state, { payload }) => {
+    localStorage.token = payload?.accessToken;
+    return ({
+      ...state,
+      loading: false,
+      authenticated: true,
+      payload,
+    });
+  },
   [acttype.FAILURE]: (state, { error }) => ({
     ...state,
     loading: false,
@@ -36,6 +40,7 @@ const auth = handleActions({
     loading: false,
     authenticated: false,
     payload: null,
+    error: null,
   }),
 }, defaultState, options);
 

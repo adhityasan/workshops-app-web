@@ -7,7 +7,9 @@ import {
   Typography,
 } from '@material-ui/core';
 
+import config from 'config';
 import WorkshopLogo from 'assets/images/workshop.png';
+import GoogleIcon from 'assets/images/google.svg';
 
 import {
   PageWrapper,
@@ -91,15 +93,28 @@ const Signin = memo(() => {
                   </Field>
                 </Grid>
               </Grid>
-              <Grid container item justify="flex-end">
-                <Button
-                  size="large"
-                  color="primary"
-                  variant="contained"
-                  onClick={handleSubmit}
-                >
-                  SIGN UP
-                </Button>
+              <Grid container item justify="flex-end" spacing={3}>
+                <Grid item>
+                  <Button
+                    size="large"
+                    color="primary"
+                    variant="contained"
+                    href={config.API.GOOGLE_SIGNIN}
+                    startIcon={<img alt="google icon" src={GoogleIcon} />}
+                  >
+                    SIGN IN WITH GOOGLE
+                  </Button>
+                </Grid>
+                <Grid item>
+                  <Button
+                    size="large"
+                    color="primary"
+                    variant="contained"
+                    onClick={handleSubmit}
+                  >
+                    SIGN UP
+                  </Button>
+                </Grid>
               </Grid>
             </Grid>
           )}
