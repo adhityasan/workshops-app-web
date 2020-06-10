@@ -1,12 +1,12 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
 
-import TopNavigation from 'components/public/nav/top';
-import PublicFooter from 'components/public/footer';
+import Navigation from 'components/navigation';
+import PublicFooter from 'components/footer';
 
 const PublicLayout = ({ children }) => (
   <LayoutWrapper>
-    <TopNavigation />
+    <Navigation />
     <ContentWrapper>
       {children}
       <PublicFooter />

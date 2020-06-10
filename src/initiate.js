@@ -1,6 +1,5 @@
 import feathers from '@feathersjs/client';
 import io from 'socket.io-client';
-
 import { API_URL } from 'config';
 import localStorage from 'helpers/localStorage';
 import { cError, cLog } from 'helpers/console';
@@ -14,14 +13,12 @@ export const initialSW = () => {
 
 // initial or update localStorage data
 export const initiateLS = () => {
-  const { initiated, notification } = localStorage;
+  const { initiated } = localStorage;
   const init = () => {
     // clear localStorage if no initiated key in localStorage
     window.localStorage.clear();
     // mark as initiated
     initiated.initItem();
-    // init default notification key
-    notification.initItem();
   };
   // check if current time is pass the REACT_APP_RESET_LS for force reset all Clients By Application Update
   const resetLSDate = new Date(process.env.REACT_APP_RESET_LS);
@@ -36,16 +33,16 @@ export const initiateLS = () => {
 export const initiateFeathers = () => {
   // Socket.io is exposed as the `io` global.
   const socket = io(API_URL, {
-    extraHeaders: { Authorization: `Bearer ${window.localStorage['kao-project.kao-fe.token']}` },
+    extraHeaders: { Authorization: `Bearer ${localStorage.token.getItem()}` },
   });
   // @feathersjs/client is exposed as the `feathers` global.
-  window.app = feathers();
-  window.app.configure(feathers.socketio(socket));
-  window.app.configure(feathers.authentication());
+  window.feathers = feathers();
+  window.feathers.configure(feathers.socketio(socket));
+  window.feathers.configure(feathers.authentication());
 
-  window.app.io.emit('create', 'authentication', {
+  window.feathers.io.emit('create', 'authentication', {
     strategy: 'jwt',
-    accessToken: window.localStorage['kao-project.kao-fe.token'],
+    accessToken: localStorage.token.getItem(),
   }, (error, newAuthResult) => {
     if (error) cError(error);
     cLog(newAuthResult, 'new authentication results');
