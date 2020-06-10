@@ -8,8 +8,15 @@ import {
 } from '@material-ui/core';
 
 import config from 'config';
+
 import WorkshopLogo from 'assets/images/workshop.png';
 import GoogleIcon from 'assets/images/google.svg';
+
+import { renderTextField } from 'components/form/fields/TextField';
+
+import {
+  email as validateEmail,
+} from 'helpers/validator';
 
 import {
   PageWrapper,
@@ -58,38 +65,27 @@ const Signin = memo(() => {
                   </Field>
                 </Grid>
                 <Grid item>
-                  <Field name="identifier">
-                    {props => (
-                      <TextField
-                        required
-                        fullWidth
-                        id="email.or.phone"
-                        variant="outlined"
-                        label="Email or Phone Number"
-                        placeholder="Email or Phone Number"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                      />
-                    )}
+                  <Field
+                    id="username"
+                    name="username"
+                    validate={validateEmail('username')}
+                    label="Phone Number or Email Address"
+                    variant="outlined"
+                    autoComplete="username"
+                  >
+                    {renderTextField}
                   </Field>
                 </Grid>
                 <Grid item>
-                  <Field name="password">
-                    {props => (
-                      <TextField
-                        required
-                        fullWidth
-                        type="password"
-                        id="password"
-                        variant="outlined"
-                        label="Password"
-                        placeholder="Password"
-                        name={props.input.name}
-                        value={props.input.value}
-                        onChange={props.input.onChange}
-                      />
-                    )}
+                  <Field
+                    id="password"
+                    name="password"
+                    label="Password"
+                    variant="outlined"
+                    autoComplete="password"
+                    type="password"
+                  >
+                    {renderTextField}
                   </Field>
                 </Grid>
               </Grid>

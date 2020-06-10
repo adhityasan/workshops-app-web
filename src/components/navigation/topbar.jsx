@@ -12,7 +12,7 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 
 
 import WorkshopLogo from 'assets/images/workshop.png';
-import SearchEvents from 'components/fields/SearchEvents';
+import SearchEvents from 'components/form/fields/SearchEvents';
 import { PUBLIC_NAVIGATIONS } from 'constant/navigations';
 
 import {

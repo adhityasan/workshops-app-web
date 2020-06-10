@@ -57,9 +57,11 @@
     }
   },
   "invalid": {
-    "equal": "{{data}} is not equal with {{base}}",
-    "empty": "{{data}} cannot be empty",
-    "default": "invalid {{data}}"
+    "required": "{{fieldName}} is required",
+    "equal": "{{fieldName}} is not equal with {{basefieldName}}",
+    "empty": "{{fieldName}} cannot be empty",
+    "phone": "Wrong format {{fieldName}}, example: +628380790713 (minimum 9 maximum 30 digit)",
+    "default": "invalid {{fieldName}}"
   },
   "common": {
     "button": {

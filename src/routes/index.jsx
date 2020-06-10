@@ -47,8 +47,8 @@ const Routes = () => {
 
   return (
     <Switch>
-      {privateRoutes.map(conf => (<PrivateProvider {...conf} auth={auth} />))}
-      {publicRoutes.map(conf => (<PublicProvider {...conf} auth={auth} />))}
+      {privateRoutes.map(conf => (<PrivateProvider key={conf.key} {...conf} auth={auth} />))}
+      {publicRoutes.map(conf => (<PublicProvider key={conf.key} {...conf} auth={auth} />))}
     </Switch>
   );
 };

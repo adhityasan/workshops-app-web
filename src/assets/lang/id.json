@@ -57,9 +57,11 @@
     }
   },
   "invalid": {
-    "equal": "{{name}} tidak sesuai dengan {{basename}}",
-    "empty": "{{name}} tidak boleh kosong",
-    "default": "{{name}} tidak valid"
+    "required": "{{fieldName}} is required",
+    "equal": "{{fieldName}} harus sesuai dengan {{baseFieldName}}",
+    "empty": "{{fieldName}} tidak boleh kosong",
+    "phone": "Kesalahan nomor {{fieldName}}, contoh: +628380790713 (paling sedikit 9 paling banyak 30 digit)",
+    "default": "{{fieldName}} tidak valid"
   },
   "common": {
     "button": {

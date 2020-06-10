@@ -12,7 +12,7 @@ import { Menu as MenuIcon } from '@material-ui/icons';
 
 import navCondition from 'helpers/validator/navCondition';
 import WorkshopLogo from 'assets/images/workshop.png';
-import SearchEvents from 'components/fields/SearchEvents';
+import SearchEvents from 'components/form/fields/SearchEvents';
 import ALL_NAVIGATIONS from 'constant/navigations';
 
 import {
@@ -56,11 +56,14 @@ const Navigation = () => {
           </SearchEventsWrapper>
         </Grid>
         <Grid container item xs={6} direction="row" justify="flex-end">
-          {ALL_NAVIGATIONS.map(nav => (
-            <PublicNav key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
-              <Typography>{nav.label}</Typography>
-            </PublicNav>
-          ))}
+          {ALL_NAVIGATIONS.map(nav => (navCondition(states, nav.strict)
+            ? (
+              <PublicNav key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
+                <ListItem>
+                  <Typography>{nav.label}</Typography>
+                </ListItem>
+              </PublicNav>
+            ) : null))}
           <Drawer anchor="right" open={drawerToggled} onClose={toggleDrawer(false)}>
             <PublicNavListWrapper
               role="presentation"
