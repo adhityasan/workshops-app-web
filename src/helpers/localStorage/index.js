@@ -9,6 +9,7 @@ const STORAGE_KEYS = {
   user: 'kao-project.kao-fe.user',
   token: 'kao-project.kao-fe.token',
   notification: 'kao-project.kao-fe.notification',
+  geolocation: 'kao-project.kao.fe.geolocation',
 };
 
 class LocalStorage {
@@ -54,6 +55,17 @@ class LocalStorage {
 
     set notification(val) {
       this.notification.setItem(val);
+    }
+
+    // NOTIFICATION
+    geolocationStorage = new LocalStorageEntry({ key: STORAGE_KEYS.geolocation });
+
+    get geolocation() {
+      return this.geolocationStorage;
+    }
+
+    set geolocation(val) {
+      this.geolocation.setItem(val);
     }
 }
 

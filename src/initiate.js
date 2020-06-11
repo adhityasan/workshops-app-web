@@ -2,6 +2,7 @@ import feathers from '@feathersjs/client';
 import io from 'socket.io-client';
 import { API_URL } from 'config';
 import localStorage from 'helpers/localStorage';
+import getLocation from 'helpers/functions/getLocation';
 import { cError, cLog } from 'helpers/console';
 
 import * as serviceWorker from './serviceWorker';
@@ -14,6 +15,17 @@ export const initialSW = () => {
 // initial or update localStorage data
 export const initiateLS = () => {
   const { initiated } = localStorage;
+  // ask current user location from the browser
+  getLocation(position => {
+    if (position) {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      localStorage.geolocation.setItem({ lat, lng });
+    }
+  }, error => {
+    localStorage.geolocation.removeItem();
+    cLog(error.message);
+  });
   const init = () => {
     // clear localStorage if no initiated key in localStorage
     window.localStorage.clear();
