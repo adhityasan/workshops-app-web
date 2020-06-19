@@ -52,7 +52,7 @@
           "error",
           "as-needed"
       ],
-      "no-underscore-dangle": ["warn", { "allow": ["_api"] }],
+      "no-underscore-dangle": ["warn", { "allow": ["_api", "_id"] }],
       "valid-typeof": "off",
       "react/jsx-props-no-spreading": [ "warn", {
         "exceptions": [ "Route", "Component", "PublicProvider", "PrivateProvider", "C" ]
