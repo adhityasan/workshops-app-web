@@ -10,7 +10,6 @@ const PublicFooter = () => (
 
 const FooterWrapper = styled.div`
   position: relative;
-  width: 100vw;
   height: 7rem;
   box-sizing: border-box;
 `;
