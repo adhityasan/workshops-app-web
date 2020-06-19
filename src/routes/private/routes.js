@@ -23,6 +23,13 @@ const privateRoutes = [
   },
   {
     exact: true,
+    path: '/me',
+    key: 'private-profile',
+    component: Profile,
+    layout: layoutType.APP,
+  },
+  {
+    exact: true,
     path: '/signout',
     key: '/private-signout',
     component: Signout,

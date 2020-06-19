@@ -32,6 +32,9 @@ export const NavigationWrapper = styled.div`
   top: 0;
   height: 5rem;
   min-width: 100vw;
+  z-index: 2;
+  background-color: white;
+  box-shadow: 1px 1px 18px #d4d4d4;
 `;
 
 export const activePublicNavStyle = {

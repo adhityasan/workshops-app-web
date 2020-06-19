@@ -8,24 +8,16 @@ export const STRICT_NAVIGATIONS_CONDITION = {
 export const PUBLIC_NAVIGATIONS = [
   {
     name: 'isorganizers',
-    label: 'Event Organizer ?',
+    label: 'Organizer ?',
     path: '/isorganizer',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.noOrganizer,
     ],
   },
   {
-    name: 'about',
-    label: 'About Us',
-    path: '/about',
-  },
-  {
-    name: 'signup',
-    label: 'Sign Up',
-    path: '/signup',
-    strict: [
-      STRICT_NAVIGATIONS_CONDITION.unauthenticated,
-    ],
+    name: 'helpfaq',
+    label: 'HELP & FAQ',
+    path: '/helpfaq',
   },
   {
     name: 'signin',
@@ -39,8 +31,17 @@ export const PUBLIC_NAVIGATIONS = [
 
 export const PRIVATE_NAVIGATIONS = [
   {
+    name: 'peoples',
+    label: 'PEOPLE',
+    path: '/peoples',
+    strict: [
+      STRICT_NAVIGATIONS_CONDITION.authenticated,
+      STRICT_NAVIGATIONS_CONDITION.hasOrganizer,
+    ],
+  },
+  {
     name: 'organizers',
-    label: 'MY ORGANIZERS',
+    label: 'ORGANIZER',
     path: '/organizers',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
@@ -49,16 +50,16 @@ export const PRIVATE_NAVIGATIONS = [
   },
   {
     name: 'me',
-    label: 'MY PROFILE',
+    label: 'PROFILE',
     path: '/me',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
     ],
   },
   {
-    name: 'signout',
-    label: 'SIGNOUT',
-    path: '/signout',
+    name: 'participated',
+    label: 'PARTICIPATED',
+    path: '/participated',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
     ],

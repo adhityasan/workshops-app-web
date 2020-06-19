@@ -3,8 +3,10 @@ import { handleActions } from 'redux-actions';
 import localStorage from 'helpers/localStorage';
 import * as acttype from 'constant/action';
 
+const existToken = localStorage.token.getItem();
+
 const defaultState = {
-  loading: false,
+  loading: !!existToken,
   authenticated: false,
   payload: null,
   error: null,

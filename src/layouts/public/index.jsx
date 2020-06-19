@@ -16,9 +16,10 @@ const PublicLayout = ({ children }) => (
 
 const ContentWrapper = styled.div`
   padding: 5rem 1rem 2rem 1rem;
-  height: calc(100vh - 7rem);
+  height: 100vh;
   max-width: 100vw;
   box-sizing: border-box;
+  overflow: scroll;
 `;
 
 const LayoutWrapper = styled.div`
