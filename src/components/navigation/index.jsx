@@ -25,7 +25,10 @@ import {
   DrawerButton,
   PublicNavListWrapper,
   PublicNavList,
+  LogoutButtonWrapper,
 } from './styled';
+
+import LogoutButton from './LogoutButton';
 
 const Navigation = () => {
   const [drawerToggled, setDrawerToggled] = useState(false);
@@ -37,57 +40,64 @@ const Navigation = () => {
   };
 
   return (
-    <NavigationWrapper>
-      <Grid container direction="row" alignItems="center">
-        <Grid container item xs={6} direction="row" alignItems="center">
-          <Link to="/" style={{ textDecoration: 'none', height: 'fit-content' }}>
-            <Iconic
-              component="div"
-              display="flex"
-              flexDirection="row"
-              alignItems="center"
-            >
-              <Logo src={WorkshopLogo} alt="Workshop Logo" />
-              <Typography variant="h5" color="textSecondary" style={{ fontWeight: 'bolder' }}>workshapp</Typography>
-            </Iconic>
-          </Link>
-          <SearchEventsWrapper>
-            <SearchEvents />
-          </SearchEventsWrapper>
+    <>
+      <NavigationWrapper>
+        <Grid container direction="row" alignItems="center">
+          <Grid container item xs={6} direction="row" alignItems="center">
+            <Link to="/" style={{ textDecoration: 'none', height: 'fit-content' }}>
+              <Iconic
+                component="div"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
+              >
+                <Logo src={WorkshopLogo} alt="Workshop Logo" />
+                <Typography variant="h5" color="textSecondary" style={{ fontWeight: 'bolder' }}>workshapp</Typography>
+              </Iconic>
+            </Link>
+            <SearchEventsWrapper>
+              <SearchEvents />
+            </SearchEventsWrapper>
+          </Grid>
+          <Grid container item xs={6} direction="row" wrap="nowrap" justify="flex-end">
+            {ALL_NAVIGATIONS.map(nav => (navCondition(states, nav.strict)
+              ? (
+                <Grid item>
+                  <PublicNav key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
+                    <ListItem>
+                      <Typography>{nav.label}</Typography>
+                    </ListItem>
+                  </PublicNav>
+                </Grid>
+              ) : null))}
+            <Drawer anchor="right" open={drawerToggled} onClose={toggleDrawer(false)}>
+              <PublicNavListWrapper
+                role="presentation"
+                onClick={toggleDrawer(false)}
+                onKeyDown={toggleDrawer(false)}
+              >
+                <List>
+                  {ALL_NAVIGATIONS.map(nav => (navCondition(states, nav.strict)
+                    ? (
+                      <PublicNavList key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
+                        <ListItem>
+                          <Typography>{nav.label}</Typography>
+                        </ListItem>
+                      </PublicNavList>
+                    ) : null))}
+                </List>
+              </PublicNavListWrapper>
+            </Drawer>
+            <DrawerButton onClick={toggleDrawer(true)}>
+              <MenuIcon />
+            </DrawerButton>
+          </Grid>
         </Grid>
-        <Grid container item xs={6} direction="row" justify="flex-end">
-          {ALL_NAVIGATIONS.map(nav => (navCondition(states, nav.strict)
-            ? (
-              <PublicNav key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
-                <ListItem>
-                  <Typography>{nav.label}</Typography>
-                </ListItem>
-              </PublicNav>
-            ) : null))}
-          <Drawer anchor="right" open={drawerToggled} onClose={toggleDrawer(false)}>
-            <PublicNavListWrapper
-              role="presentation"
-              onClick={toggleDrawer(false)}
-              onKeyDown={toggleDrawer(false)}
-            >
-              <List>
-                {ALL_NAVIGATIONS.map(nav => (navCondition(states, nav.strict)
-                  ? (
-                    <PublicNavList key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
-                      <ListItem>
-                        <Typography>{nav.label}</Typography>
-                      </ListItem>
-                    </PublicNavList>
-                  ) : null))}
-              </List>
-            </PublicNavListWrapper>
-          </Drawer>
-          <DrawerButton onClick={toggleDrawer(true)}>
-            <MenuIcon />
-          </DrawerButton>
-        </Grid>
-      </Grid>
-    </NavigationWrapper>
+      </NavigationWrapper>
+      <LogoutButtonWrapper>
+        <LogoutButton />
+      </LogoutButtonWrapper>
+    </>
   );
 };
 

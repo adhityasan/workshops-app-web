@@ -1,6 +1,6 @@
 import React, { memo } from 'react';
 import styled from 'styled-components';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
 import { up } from 'styled-breakpoints';
 import Carousel from 'react-material-ui-carousel';
 
@@ -49,12 +49,15 @@ const ItemCarousel = memo(({ name, description, image }) => (
 ));
 
 const Carousels = () => (
-  <Carousel
-    // indicators={false}
-    interval={5000}
-  >
-    {items.map(item => <ItemCarousel key={item.id} name={item.name} description={item.description} image={item.image} />)}
-  </Carousel>
+  <Grid item lg={12}>
+    <Carousel
+      // indicators={false}
+      timeout={250}
+      interval={5000}
+    >
+      {items.map(item => <ItemCarousel key={item.id} name={item.name} description={item.description} image={item.image} />)}
+    </Carousel>
+  </Grid>
 );
 
 const CarouselImageWrapper = styled.div`
@@ -64,6 +67,9 @@ const CarouselImageWrapper = styled.div`
     width: 100%;
     height: 20rem;
     border-radius: 0.5rem;
+  }
+  ${up('md')} {
+    height: 25rem;
   }
 `;
 

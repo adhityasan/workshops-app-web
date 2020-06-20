@@ -45,7 +45,7 @@ export const PublicNav = styled(NavLink)`
   display: none;
   ${up('md')} {
     display: flex;
-    margin-right: 2rem;
+    margin-right: 1rem;
     font-weight: 800;
     color: grey;
     text-decoration: none;
@@ -77,4 +77,11 @@ export const PublicNavList = styled(NavLink)`
   ${up('md')} {
     display: none;
   }
+`;
+
+export const LogoutButtonWrapper = styled.div`
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 2;
 `;

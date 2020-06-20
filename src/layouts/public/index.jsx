@@ -20,6 +20,9 @@ const ContentWrapper = styled.div`
   max-width: 100vw;
   box-sizing: border-box;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const LayoutWrapper = styled.div`

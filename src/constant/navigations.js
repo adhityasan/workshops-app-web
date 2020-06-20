@@ -8,7 +8,7 @@ export const STRICT_NAVIGATIONS_CONDITION = {
 export const PUBLIC_NAVIGATIONS = [
   {
     name: 'isorganizers',
-    label: 'Organizer ?',
+    label: 'Organize',
     path: '/isorganizer',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.noOrganizer,
@@ -40,9 +40,9 @@ export const PRIVATE_NAVIGATIONS = [
     ],
   },
   {
-    name: 'organizers',
-    label: 'ORGANIZER',
-    path: '/organizers',
+    name: 'organize',
+    label: 'ORGANIZE',
+    path: '/organize',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
       STRICT_NAVIGATIONS_CONDITION.hasOrganizer,
