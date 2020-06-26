@@ -58,12 +58,12 @@ const Signin = memo(() => {
                 <Grid container item direction="column" spacing={2}>
                   <Grid item>
                     <Field
-                      id="username"
-                      name="username"
-                      validate={email('username')}
-                      label="Phone Number or Email Address"
+                      id="email"
+                      name="email"
+                      validate={email('email')}
+                      label="Email Address"
                       variant="outlined"
-                      autoComplete="username"
+                      autoComplete="email"
                     >
                       {renderTextField}
                     </Field>

@@ -4,12 +4,13 @@ import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 import { ExitToApp } from '@material-ui/icons';
 
-const LogoutButton = () => {
+const LogoutButton = ({ showLabel = false }) => {
   const authenticated = useSelector(state => state.auth.authenticated);
+  console.log(showLabel);
 
   return authenticated ? (
     <NavLink to="signout" style={{ textDecoration: 'none' }}>
-      <CustomButton>
+      <CustomButton showLabel={showLabel}>
         <span>
           SIGNOUT
         </span>
@@ -30,14 +31,15 @@ const CustomButton = styled.button`
   background-color: ${({ theme }) => theme.palette.primary.contrastText};
   color: ${({ theme }) => theme.palette.primary.main};
   span {
+    font-weight: bold;
     transition: 250ms;
-    width: 0;
+    width: ${({ showLabel }) => (showLabel ? 'fit-content' : 0)};
+    margin-right: ${({ showLabel }) => (showLabel ? '0.5rem' : 0)};
     overflow: hidden;
   }
 
   :hover {
     background-color: ${({ theme }) => theme.palette.secondary.main};
-    color: ${({ theme }) => theme.palette.secondary.contrastText};
     span {
       margin-right: 0.5rem;
       display: inline-block;

@@ -5,6 +5,7 @@ export const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
 export default {
   APP_NAME: 'workshapp',
   API: {
+    ME: `${API_URL}/me`,
     SIGNIN: `${API_URL}/authentication`,
     SIGNUP: `${API_URL}/signup`,
     GOOGLE_SIGNIN: `${API_URL}/oauth/google`,

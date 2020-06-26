@@ -11,6 +11,7 @@ export const PUBLIC_NAVIGATIONS = [
     label: 'Organize',
     path: '/isorganizer',
     strict: [
+      STRICT_NAVIGATIONS_CONDITION.unauthenticated,
       STRICT_NAVIGATIONS_CONDITION.noOrganizer,
     ],
   },
@@ -18,6 +19,9 @@ export const PUBLIC_NAVIGATIONS = [
     name: 'helpfaq',
     label: 'HELP & FAQ',
     path: '/helpfaq',
+    strict: [
+      STRICT_NAVIGATIONS_CONDITION.unauthenticated,
+    ],
   },
   {
     name: 'signin',
@@ -45,21 +49,20 @@ export const PRIVATE_NAVIGATIONS = [
     path: '/organize',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
-      STRICT_NAVIGATIONS_CONDITION.hasOrganizer,
-    ],
-  },
-  {
-    name: 'me',
-    label: 'PROFILE',
-    path: '/me',
-    strict: [
-      STRICT_NAVIGATIONS_CONDITION.authenticated,
     ],
   },
   {
     name: 'participated',
     label: 'PARTICIPATED',
     path: '/participated',
+    strict: [
+      STRICT_NAVIGATIONS_CONDITION.authenticated,
+    ],
+  },
+  {
+    name: 'me',
+    label: 'PROFILE',
+    path: '/me',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
     ],

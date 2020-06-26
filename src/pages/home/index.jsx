@@ -1,12 +1,13 @@
 import React from 'react';
-import styled from 'styled-components';
 import { Grid } from '@material-ui/core';
+
+import { PageWrapper } from 'components/styled';
 
 import Carousels from './components/carousels';
 import PopularAround from './components/popularAround';
 
 const Home = () => (
-  <Wrapper container padding="1rem 0.5rem" direction="column" spacing={1}>
+  <PageWrapper container direction="column" spacing={1}>
     <Grid container item alignContent="stretch">
       <Carousels />
     </Grid>
@@ -16,15 +17,7 @@ const Home = () => (
       <PopularAround />
       <PopularAround />
     </Grid>
-  </Wrapper>
+  </PageWrapper>
 );
-
-const Wrapper = styled(Grid)`
-  position: relative;
-  padding: 1rem 0.5rem;
-  display: flex;
-  flex-direction: column;
-  max-width: 1200px;
-`;
 
 export default Home;

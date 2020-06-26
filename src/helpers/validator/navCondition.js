@@ -4,7 +4,7 @@ import { STRICT_NAVIGATIONS_CONDITION as strictConditions } from 'constant/navig
 const StrictNavigationChecker = {
   [strictConditions.authenticated]: states => _get(states, 'auth.authenticated'),
   [strictConditions.unauthenticated]: states => _get(states, 'auth.authenticated') === false,
-  [strictConditions.hasOrganizer]: states => _get(states, 'user.organizers') !== undefined,
+  [strictConditions.hasOrganizer]: states => _get(states, 'me.organizers') !== undefined && _get(states, 'me.organizers').length > 0,
   [strictConditions.noOrganizer]: () => true,
 };
 
