@@ -60,9 +60,9 @@ export const PRIVATE_NAVIGATIONS = [
     ],
   },
   {
-    name: 'me',
+    name: 'profile',
     label: 'PROFILE',
-    path: '/me',
+    path: '/profile',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
     ],

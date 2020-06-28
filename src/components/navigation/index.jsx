@@ -62,8 +62,8 @@ const Navigation = () => {
           <Grid container item xs={6} direction="row" wrap="nowrap" justify="flex-end">
             {ALL_NAVIGATIONS.map(nav => (navCondition(states, nav.strict)
               ? (
-                <Grid item>
-                  <PublicNav key={nav.name} activeStyle={activePublicNavStyle} to={nav.path}>
+                <Grid item key={nav.name}>
+                  <PublicNav activeStyle={activePublicNavStyle} to={nav.path}>
                     <ListItem>
                       <Typography>{nav.label}</Typography>
                     </ListItem>

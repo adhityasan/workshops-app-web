@@ -6,6 +6,7 @@ import Signout from 'pages/signout';
 import ServerError from 'pages/500';
 
 const Profile = asyncComponent(() => import('pages/profile'));
+const ProfileEdit = asyncComponent(() => import('pages/profile/edit'));
 
 const privateRoutes = [
   {
@@ -31,9 +32,9 @@ const privateRoutes = [
   },
   {
     exact: true,
-    path: '/me',
+    path: '/profile/:id/edit',
     key: 'private-profile',
-    component: Profile,
+    component: ProfileEdit,
     layout: layoutType.APP,
   },
   {

@@ -12,7 +12,7 @@ export default {
   },
   secondary: {
     main: '#fbb03b',
-    contrastText: '#dadada',
+    contrastText: '#fafafa',
   },
   error: {
     main: '#f44336',

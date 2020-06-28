@@ -3,7 +3,7 @@ import { createActions } from 'redux-actions';
 import config from 'config';
 import axiosins from 'axios.instance';
 import * as acttype from 'constant/action';
-import { me as getMe } from 'stores/modules/me/action';
+import { me as getMe } from 'stores/modules/me/actions';
 
 export const actions = createActions(
   acttype.REQUEST,

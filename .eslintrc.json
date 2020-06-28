@@ -55,7 +55,7 @@
       "no-underscore-dangle": ["warn", { "allow": ["_api", "_id"] }],
       "valid-typeof": "off",
       "react/jsx-props-no-spreading": [ "warn", {
-        "exceptions": [ "Route", "Component", "PublicProvider", "PrivateProvider", "C" ]
+        "exceptions": [ "Route", "Component", "PublicProvider", "PrivateProvider", "C", "TextField" ]
       }],
       "max-len": [ "warn", { "ignoreComments": true, "code": 150 }],
       "react-hooks/rules-of-hooks": "error",

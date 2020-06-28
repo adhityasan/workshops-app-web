@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 import { NavLink } from 'react-router-dom';
 import {
   // List,
@@ -18,34 +19,35 @@ import {
 } from './styled';
 import LogoutButton from './LogoutButton';
 
-const SidebarNav = () => (
-  <Container>
-    <HeadNav>
+const SidebarNav = ({ show }) => (
+  <Container show={show}>
+    <HeaderSidebar>
       <NavLink to="/" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
         <Iconic
           component="div"
           display="flex"
           flexDirection="row"
           alignItems="center"
+          justifyContent="center"
         >
           <Logo src={WorkshopLogo} alt="Workshop Logo" />
           <Typography variant="h5" color="textSecondary" style={{ fontWeight: 'bolder' }}>workshapp</Typography>
         </Iconic>
       </NavLink>
-    </HeadNav>
-    <BodyNav>
+    </HeaderSidebar>
+    <BodySidebar>
       <Grid container direction="column" spacing={2} wrap="wrap" style={{ padding: '1rem' }}>
         <Grid item>
-          <CustomNavLink to="/me" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
+          <CustomNavLink to="/profile" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
             <NavItem>
-              <Typography variant="subtitle1" component="div">MY PROFILE</Typography>
+              <Typography variant="subtitle1" component="div">PROFILE</Typography>
             </NavItem>
           </CustomNavLink>
         </Grid>
         <Grid item>
-          <CustomNavLink to="/my-events" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
+          <CustomNavLink to="/events" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
             <NavItem>
-              <Typography variant="subtitle1" component="div">MY EVENTS</Typography>
+              <Typography variant="subtitle1" component="div">EVENTS</Typography>
             </NavItem>
           </CustomNavLink>
         </Grid>
@@ -64,39 +66,52 @@ const SidebarNav = () => (
           </CustomNavLink>
         </Grid>
       </Grid>
-    </BodyNav>
-    <FootNav>
+    </BodySidebar>
+    <FooterSidebar>
       <LogoutButton showLabel />
-    </FootNav>
+    </FooterSidebar>
   </Container>
 );
 
 const Container = styled.div`
-  display: flex;
   flex-direction: column;
   width: 15rem;
   height: 100vh;
-  padding: 1rem 0;
   background-color: #e5e5e5;
-  box-shadow: 4px -1px 9px 1px #b6b6b6;
+  box-shadow: 4px 3px 9px 1px #b6b6b6;
   box-sizing: border-box;;
   position: fixed;
-  left: 0;
+  right: 0;
   z-index: 1;
+  display: ${({ show }) => (show ? 'flex' : 'none')};
+  ${up('md')} {
+    padding: 1rem 0;
+    left: 0;
+    box-shadow: 4px -1px 9px 1px #b6b6b6;
+    display: flex;
+  }
 `;
 
-const HeadNav = styled.div`
-  width: 100%;
-  height: 3.5rem;
-  border-bottom: 2px solid #cacaca;
+const HeaderSidebar = styled.div`
+  display: none;
+  ${up('md')} {
+    width: 100%;
+    height: 3.5rem;
+    border-bottom: 2px solid #cacaca;
+    display: block;
+  }
 `;
 
-const BodyNav = styled.div`
+const BodySidebar = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 3.5rem;
+  ${up('md')} {
+    margin: 0;
+  }
 `;
 
-const FootNav = styled.div`
+const FooterSidebar = styled.div`
   padding: 1rem;
   display: flex;
   justify-content: center;

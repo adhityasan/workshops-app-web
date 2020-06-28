@@ -1,16 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
+import { Backdrop } from '@material-ui/core';
 
 import SidebarNav from 'components/navigation/sidebar';
+import AppBar from 'components/navigation/appbar';
 
-const AppLayout = ({ children }) => (
-  <LayoutWrapper>
-    <SidebarNav />
-    <ContentWrapper>
-      {children}
-    </ContentWrapper>
-  </LayoutWrapper>
-);
+const AppLayout = ({ children }) => {
+  const [showSidebar, setShowSidebar] = useState(false);
+
+  return (
+    <LayoutWrapper>
+      <AppBar sidebarStatus={showSidebar} setShowSidebar={setShowSidebar} />
+      <SidebarNav show={showSidebar} />
+      <Backdrop open={showSidebar} onClick={() => setShowSidebar(false)} />
+      <ContentWrapper>
+        {children}
+      </ContentWrapper>
+    </LayoutWrapper>
+  );
+};
 
 const LayoutWrapper = styled.div`
   position: fixed;
@@ -20,12 +29,18 @@ const LayoutWrapper = styled.div`
 
 const ContentWrapper = styled.div`
   height: 100vh;
+  width: 100vw;
   box-sizing: border-box;
-  overflow: scroll;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-left: 15rem;
+  flex-wrap: wrap;
+  margin-top: 4rem;
+  ${up('md')} {
+    margin-top: 0;
+    margin-left: 15rem;
+    width: calc(100vw - 15rem);
+  }
 `;
 
 export default AppLayout;
