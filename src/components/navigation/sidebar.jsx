@@ -54,7 +54,7 @@ const SidebarNav = ({ show }) => (
         <Grid item>
           <CustomNavLink to="/organize" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
             <NavItem>
-              <Typography variant="subtitle1" component="div">ORGANIZE</Typography>
+              <Typography variant="subtitle1" component="div">ORGANIZERS</Typography>
             </NavItem>
           </CustomNavLink>
         </Grid>
@@ -82,7 +82,7 @@ const Container = styled.div`
   box-sizing: border-box;;
   position: fixed;
   right: 0;
-  z-index: 1;
+  z-index: 3;
   display: ${({ show }) => (show ? 'flex' : 'none')};
   ${up('md')} {
     padding: 1rem 0;
@@ -127,6 +127,7 @@ const NavItem = styled.div`
   border-radius: 8px;
   background-color: none;
   padding: 0.5rem;
+  font-weight: 500;
   :hover {
     background-color: ${({ theme }) => theme.palette.secondary.main};
     div {

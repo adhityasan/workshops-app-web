@@ -14,8 +14,8 @@ const Dashboard = () => {
 
   return (
     <Wrapper>
-      <Grid container direction="column" justify="center" wrap="wrap" alignItems="center">
-        <Grid container item xs={12} sm={10} md={8}>
+      <Grid container justify="center" alignItems="flex-start" spacing={3}>
+        <Grid item xs={12} sm={10} md={8}>
           <ProfileCard payload={me.payload} />
         </Grid>
       </Grid>
@@ -25,12 +25,12 @@ const Dashboard = () => {
 
 const Wrapper = styled.div`
   padding: 1rem;
-  overflow-x: hidden;
-  overflow-y: scroll;
+  max-height: 100%;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
+  overflow-y: scroll;
   display: flex;
-  justify-content: center;
   box-sizing: border-box;
   ${up('md')} {
     align-items: center;

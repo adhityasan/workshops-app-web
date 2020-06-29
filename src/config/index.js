@@ -9,6 +9,7 @@ export default {
     SIGNIN: `${API_URL}/authentication`,
     SIGNUP: `${API_URL}/signup`,
     PROFILE: `${API_URL}/profiles`,
+    ORGANIZERS: `${API_URL}/organizers`,
     GOOGLE_SIGNIN: `${API_URL}/oauth/google`,
   },
 };

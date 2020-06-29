@@ -9,11 +9,13 @@ import thunk from 'redux-thunk';
 import auth from './modules/auth/reducer';
 import me from './modules/me/reducer';
 import profiles from './modules/profiles/reducer';
+import organizers from './modules/organizers/reducer';
 
 const reducers = combineReducers({
   auth,
   me,
   profiles,
+  organizers,
 });
 
 const configureStore = () => {

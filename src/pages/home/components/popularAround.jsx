@@ -4,7 +4,7 @@ import {
   Typography,
 } from '@material-ui/core';
 
-import EventCard from 'components/cards/event';
+import EventCard from 'components/cards/simple';
 
 const PopularAround = memo(() => {
   const [workshops, setWorkshops] = useState([]);

@@ -1,7 +1,7 @@
 import asyncComponent from 'components/hoc/async';
 import * as layoutType from 'constant/layout';
 import Dashboard from 'pages/dashboard';
-import Organize from 'pages/organize';
+import Organizers from 'pages/organizers';
 import Signout from 'pages/signout';
 import ServerError from 'pages/500';
 
@@ -18,9 +18,9 @@ const privateRoutes = [
   },
   {
     exact: true,
-    path: '/organize',
-    key: 'organize',
-    component: Organize,
+    path: '/organizers',
+    key: 'organizers',
+    component: Organizers,
     layout: layoutType.APP,
   },
   {

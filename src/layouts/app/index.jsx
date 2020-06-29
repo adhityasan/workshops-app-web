@@ -13,7 +13,7 @@ const AppLayout = ({ children }) => {
     <LayoutWrapper>
       <AppBar sidebarStatus={showSidebar} setShowSidebar={setShowSidebar} />
       <SidebarNav show={showSidebar} />
-      <Backdrop open={showSidebar} onClick={() => setShowSidebar(false)} />
+      <Backdrop open={showSidebar} onClick={() => setShowSidebar(false)} style={{ zIndex: 2 }} />
       <ContentWrapper>
         {children}
       </ContentWrapper>
@@ -28,9 +28,8 @@ const LayoutWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  height: 100vh;
-  width: 100vw;
   box-sizing: border-box;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;

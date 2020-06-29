@@ -50,7 +50,7 @@ const ProfileCard = memo(({ payload }) => {
             <TextField disabled name="bio" rows={3} multiline value={_get(payload, 'bio', '')} label="Bio" fullWidth />
           </Grid>
         </Grid>
-        <Grid container item direction="row" justify="flex-end" spacing={1}>
+        <Grid container item direction="row" justify="flex-end" spacing={1} style={{ marginTop: '1rem' }}>
           <Grid item>
             <Button
               variant="contained"

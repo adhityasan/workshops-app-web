@@ -44,9 +44,9 @@ export const PRIVATE_NAVIGATIONS = [
     ],
   },
   {
-    name: 'organize',
-    label: 'ORGANIZE',
-    path: '/organize',
+    name: 'organizers',
+    label: 'ORGANIZERS',
+    path: '/organizers',
     strict: [
       STRICT_NAVIGATIONS_CONDITION.authenticated,
     ],

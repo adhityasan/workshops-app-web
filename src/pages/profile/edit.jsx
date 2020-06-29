@@ -139,7 +139,7 @@ const Dashboard = () => {
                         />
                       </Grid>
                     </Grid>
-                    <Grid container item direction="row" justify="flex-end" spacing={1}>
+                    <Grid container item direction="row" justify="flex-end" spacing={1} style={{ marginTop: '1rem' }}>
                       <Grid item>
                         <Button
                           variant="contained"
