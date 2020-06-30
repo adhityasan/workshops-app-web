@@ -40,7 +40,7 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <Grid container direction="column" justify="center" wrap="wrap" alignItems="center">
-        <Grid container item xs={12} sm={10} md={8}>
+        <Grid container item xs={10} sm={8} md={6}>
           <Paper elevation={3} style={{ width: '100%' }}>
             <Grid container spacing={2} direction="column" style={{ padding: '2rem' }}>
               <Grid container item direction="row" spacing={2} alignContent="center" justify="center" alignItems="center">

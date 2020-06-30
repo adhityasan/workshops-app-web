@@ -24,7 +24,8 @@ const OrganizerCard = ({ organizer }) => (
     </CardContent>
     <CardActions>
       <Button href={`/organizers/${organizer._id}`} component="a" hre variant="contained" color="secondary" size="small">Details</Button>
-      <Button variant="contained" color="info" size="small">Create Event</Button>
+      <Button variant="contained" size="small">Events</Button>
+      <Button variant="contained" color="primary" size="small">Update</Button>
     </CardActions>
   </Card>
 );

@@ -3,13 +3,15 @@ import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { NavLink } from 'react-router-dom';
 import {
-  // List,
-  // ListItem,
   Grid,
   Typography,
-  // Drawer,
 } from '@material-ui/core';
-
+import {
+  Face as FaceIcon,
+  School as SchoolIcon,
+  SupervisedUserCircle as SupervisedUserCircleIcon,
+  CheckCircle as CheckCircleIcon,
+} from '@material-ui/icons';
 import WorkshopLogo from 'assets/images/workshop.png';
 
 import {
@@ -40,6 +42,7 @@ const SidebarNav = ({ show }) => (
         <Grid item>
           <CustomNavLink to="/profile" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
             <NavItem>
+              <FaceIcon />
               <Typography variant="subtitle1" component="div">PROFILE</Typography>
             </NavItem>
           </CustomNavLink>
@@ -47,13 +50,15 @@ const SidebarNav = ({ show }) => (
         <Grid item>
           <CustomNavLink to="/events" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
             <NavItem>
+              <SchoolIcon />
               <Typography variant="subtitle1" component="div">EVENTS</Typography>
             </NavItem>
           </CustomNavLink>
         </Grid>
         <Grid item>
-          <CustomNavLink to="/organize" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
+          <CustomNavLink to="/organizers" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
             <NavItem>
+              <SupervisedUserCircleIcon />
               <Typography variant="subtitle1" component="div">ORGANIZERS</Typography>
             </NavItem>
           </CustomNavLink>
@@ -61,6 +66,7 @@ const SidebarNav = ({ show }) => (
         <Grid item>
           <CustomNavLink to="/accomplishment" activeStyle={activePublicNavStyle} style={{ textDecoration: 'none', height: 'fit-content' }}>
             <NavItem>
+              <CheckCircleIcon />
               <Typography variant="subtitle1" component="div">ACCOMPLISHMENT</Typography>
             </NavItem>
           </CustomNavLink>
@@ -84,6 +90,9 @@ const Container = styled.div`
   right: 0;
   z-index: 3;
   display: ${({ show }) => (show ? 'flex' : 'none')};
+  svg {
+    margin-right: 0.5rem;
+  }
   ${up('md')} {
     padding: 1rem 0;
     left: 0;
@@ -128,6 +137,9 @@ const NavItem = styled.div`
   background-color: none;
   padding: 0.5rem;
   font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
   :hover {
     background-color: ${({ theme }) => theme.palette.secondary.main};
     div {

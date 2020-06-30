@@ -21,31 +21,40 @@ const Organize = () => {
       {myOrganizers.length === 0
         ? <NoOrganizer />
         : (
-          <Grid container direction="column" spacing={4}>
+          <>
             <CreateDialog />
-            <Grid container item direction="row" justify="space-between">
-              <Grid item>
-                <Typography variant="h4">My Organizers</Typography>
-                <div style={{ width: '100%', borderBottom: '2px solid #4f4f4f' }} />
-              </Grid>
-              <Grid item>
-                <Button size="large" variant="outlined" color="primary" onClick={() => setDialog(!dialogOpenStatus)}>Create New Organizer</Button>
-              </Grid>
-            </Grid>
-            <Grid container item spacing={2}>
-              {myOrganizers.map(org => (
-                <Grid item xs={12} sm={6} md={4} lg={3}>
-                  <OrganizerCard organizer={org} />
+            <Grid container direction="column" spacing={2}>
+              <Grid container item direction="row" justify="space-between" spacing={2}>
+                <Grid item>
+                  <Typography variant="h4">My Organizers</Typography>
+                  <div style={{ width: '100%', borderBottom: '2px solid #4f4f4f' }} />
                 </Grid>
-              ))}
-            </Grid>
-            <Grid container item>
-              <Grid item>
-                <Typography variant="h4">Contribute To</Typography>
-                <div style={{ width: '100%', borderBottom: '2px solid #4f4f4f' }} />
+                <Grid item>
+                  <Button size="large" variant="outlined" color="primary" onClick={() => setDialog(!dialogOpenStatus)}>Create New Organizer</Button>
+                </Grid>
+              </Grid>
+              <Grid container item spacing={2}>
+                {myOrganizers.map(org => (
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <OrganizerCard organizer={org} />
+                  </Grid>
+                ))}
+              </Grid>
+              <Grid container item spacing={2}>
+                <Grid item>
+                  <Typography variant="h4">Contribute To</Typography>
+                  <div style={{ width: '100%', borderBottom: '2px solid #4f4f4f' }} />
+                </Grid>
+              </Grid>
+              <Grid container item spacing={2}>
+                {myOrganizers.map(org => (
+                  <Grid item xs={12} sm={6} md={4} lg={3}>
+                    <OrganizerCard organizer={org} />
+                  </Grid>
+                ))}
               </Grid>
             </Grid>
-          </Grid>
+          </>
         )}
     </Wrapper>
   );
@@ -53,11 +62,11 @@ const Organize = () => {
 
 const Wrapper = styled.div`
   padding: 2rem;
-  max-height: 100%;
   width: 100%;
-  overflow-x: hidden;
+  height: 100%;
   overflow-y: scroll;
   display: flex;
+  flex-wrap: wrap;
   box-sizing: border-box;
 `;
 

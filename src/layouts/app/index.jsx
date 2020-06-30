@@ -28,17 +28,17 @@ const LayoutWrapper = styled.div`
 `;
 
 const ContentWrapper = styled.div`
-  box-sizing: border-box;
   height: 100vh;
+  box-sizing: border-box;
   display: flex;
   flex-direction: column;
   align-items: center;
   flex-wrap: wrap;
-  margin-top: 4rem;
+  padding-top: 4rem;
   ${up('md')} {
-    margin-top: 0;
-    margin-left: 15rem;
-    width: calc(100vw - 15rem);
+    padding-top: 0;
+    padding-left: 15rem;
+    width: 100vw;
   }
 `;
 

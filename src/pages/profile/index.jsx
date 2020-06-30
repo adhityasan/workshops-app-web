@@ -15,7 +15,7 @@ const Dashboard = () => {
   return (
     <Wrapper>
       <Grid container justify="center" alignItems="flex-start" spacing={3}>
-        <Grid item xs={12} sm={10} md={8}>
+        <Grid item xs={10} sm={8} md={6}>
           <ProfileCard payload={me.payload} />
         </Grid>
       </Grid>
